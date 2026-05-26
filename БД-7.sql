@@ -1,0 +1,22 @@
+CREATE TABLESPACE my_tablespace1
+	OWNER postgres
+	LOCATION E'D:\\GitGud';
+
+ALTER TABLESPACE my_tablespace1
+	OWNER TO postgres;
+
+CREATE DATABASE "my_bd"
+	WITH
+	OWNER = postgres
+	ENCODING = 'UTF8'
+	LC_COLLATE = 'Russian_Russia.1251'
+	LC_CTYPE = 'Russian_Russia.1251'
+	TABLESPACE = my_tablespace1
+	CONNECTION LIMIT = 10
+	IS_TEMPLATE = False;	
+
+CREATE TABLE my_table1 (column1 int, column2 bigint);
+CREATE TABLE my_table2 (column1 int, column2 bigint)
+TABLESPACE pg_default;
+ALTER TABLE my_table1 
+  SET TABLESPACE pg_default;
